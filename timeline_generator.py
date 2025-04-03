@@ -1,7 +1,6 @@
 import matplotlib.pyplot as plt
 import datetime
 
-# Load data from the text file and categorize events
 def load_data(filename):
     data = []
     with open(filename, 'r') as file:
@@ -40,12 +39,10 @@ def load_data(filename):
 
 data = load_data('attack_logs.txt')
 
-# Convert timestamps to datetime objects
 timestamps = [datetime.datetime.strptime(item['Timestamp'], '%m/%d/%Y %I:%M:%S %p') for item in data]
 stages = [item['Stage'] for item in data]
 descriptions = [item['Description'] for item in data]
 
-# Create the timeline plot with color-coded stages and date included
 plt.figure(figsize=(14, 8))
 stage_colors = {
     'Initial Access': 'red',
@@ -60,19 +57,18 @@ stage_colors = {
 
 for i, (ts, stage, desc) in enumerate(zip(timestamps, stages, descriptions)):
     plt.plot(ts, i, marker='o', color=stage_colors[stage], markersize=8)
-    # Include full timestamp (date and time) in the annotation
+
     plt.text(ts, i + 0.1, f"{ts.strftime('%Y-%m-%d %H:%M:%S')}: {desc}", fontsize=8, ha='left', va='center')
 
-plt.yticks([])  # Hide y-axis ticks
+plt.yticks([])
 plt.xlabel('Time')
 plt.title('Attack Log Timeline with Stages')
 plt.grid(axis='x')
 
-# Create legend (key) for stages
 legend_elements = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, markersize=8, label=stage)
                    for stage, color in stage_colors.items()]
-# Position the legend to the top left of the plot
+
 plt.legend(handles=legend_elements, loc='upper left')
 
-plt.tight_layout()  # Adjust layout to fit legend
+plt.tight_layout()
 plt.show()
