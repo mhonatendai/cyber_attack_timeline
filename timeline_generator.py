@@ -71,7 +71,8 @@ plt.grid(axis='x')
 # Create legend (key) for stages
 legend_elements = [plt.Line2D([0], [0], marker='o', color='w', markerfacecolor=color, markersize=8, label=stage)
                    for stage, color in stage_colors.items()]
-plt.legend(handles=legend_elements, loc='upper left', bbox_to_anchor=(1, 1))  # Position legend outside the plot
+# Position the legend to the top left of the plot
+plt.legend(handles=legend_elements, loc='upper left')
 
-plt.tight_layout(rect=[0, 0, 0.8, 1])  # Make room for the legend
+plt.tight_layout()  # Adjust layout to fit legend
 plt.show()
