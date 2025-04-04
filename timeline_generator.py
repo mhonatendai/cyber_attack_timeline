@@ -2,7 +2,7 @@ import matplotlib.pyplot as plt
 import datetime
 
 def load_data(filename):
-    data = []
+    loaded_data = []
     with open(filename, 'r') as file:
         text = file.read()
     lines = text.strip().split('\n\n')
@@ -15,9 +15,14 @@ def load_data(filename):
             elif line.strip():
                 description_lines.append(line.strip())
         if timestamp_line:
-            data.append({'Timestamp': timestamp_line, 'Description': ' '.join(description_lines)})
+            loaded_data.append({'Timestamp': timestamp_line, 'Description': ' '.join(description_lines)})
 
-    for event in data:
+    assign_attack_stage(loaded_data)
+    return loaded_data
+
+
+def assign_attack_stage(loaded_data):
+    for event in loaded_data:
         description = event['Description'].lower()
         if "account failed to log on" in description or "account was successfully logged on" in description:
             event['Stage'] = 'Initial Access'
@@ -35,7 +40,6 @@ def load_data(filename):
             event['Stage'] = 'Impact'
         else:
             event['Stage'] = 'Unknown'
-    return data
 
 data = load_data('attack_logs.txt')
 
