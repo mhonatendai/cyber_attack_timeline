@@ -1,6 +1,7 @@
 import matplotlib.pyplot as plt
 import datetime
 
+
 def load_data(filename):
     loaded_data = []
     with open(filename, 'r') as file:
@@ -40,6 +41,7 @@ def assign_attack_stage(loaded_data):
             event['Stage'] = 'Impact'
         else:
             event['Stage'] = 'Unknown'
+
 
 data = load_data('attack_logs.txt')
 
