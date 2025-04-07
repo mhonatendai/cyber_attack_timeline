@@ -16,3 +16,6 @@ Here are the steps to run the project.
 - Install the Tkinter library for interactive plotting using the following command:
   - _**sudo apt-get install python3-tk**_ 
 - Make sure you have the attack_logs.txt file and then run the timeline_generator.py in you favourite IDE.
+
+## _TODO_
+- Improve functionality so that users can upload files in different formats (json, txt) and they will have the system generate the timeline.
