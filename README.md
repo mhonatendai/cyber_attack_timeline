@@ -1,7 +1,7 @@
 ## Cyberattack Timeline Plotter using Python.
-### We are using Python library matplotlib.
+### We are using Python library Matplotlib.
 
-Here are the steps to run the project.
+Here are the steps to run the project: the hard way 🚀
 
 - Of course clone this project to your local machine.
 - Make sure you have Python installed on your machine.
